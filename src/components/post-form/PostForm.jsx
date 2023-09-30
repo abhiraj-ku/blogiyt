@@ -3,7 +3,7 @@ import { useForm } from "react-hook-form";
 import { Button, Input, RTE, Select } from "..";
 import appwriteService from "../../appwrite/config";
 import { useNavigate } from "react-router";
-import { UseSelector } from "react-redux";
+// import { UseSelector } from "react-redux";
 
 export default function PostForm({ post }) {
   const { register, handleSubmit, watch, setValue, control, getValues } =
