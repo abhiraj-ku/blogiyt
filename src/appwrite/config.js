@@ -1,4 +1,4 @@
-import conf from "../conf/conf";
+import conf from "../conf/conf.js";
 import { Client, ID, Databases, Storage, Query } from "appwrite";
 
 export class Service {
@@ -13,8 +13,6 @@ export class Service {
     this.databases = new Databases(this.client);
     this.bucket = new Storage(this.client);
   }
-
-  //Create a post
 
   async createPost({ title, slug, content, featuredImage, status, userId }) {
     try {
@@ -31,11 +29,9 @@ export class Service {
         }
       );
     } catch (error) {
-      console.log("Appwrite serive :: createPost :: error", error);
+      console.log("Appwrite servive :: createPost :: error", error);
     }
   }
-
-  //Update the post\
 
   async updatePost(slug, { title, content, featuredImage, status }) {
     try {
@@ -51,11 +47,10 @@ export class Service {
         }
       );
     } catch (error) {
-      console.log("Appwrite service::updatePost:: erorr", error);
+      console.log("Appwrite serive :: updatePost :: error", error);
     }
   }
 
-  //Delete the post
   async deletePost(slug) {
     try {
       await this.databases.deleteDocument(
@@ -65,12 +60,11 @@ export class Service {
       );
       return true;
     } catch (error) {
-      console.log("Appwrite service::deletePost:: erorr", error);
+      console.log("Appwrite serive :: deletePost :: error", error);
       return false;
     }
   }
 
-  //Get post
   async getPost(slug) {
     try {
       return await this.databases.getDocument(
@@ -83,6 +77,7 @@ export class Service {
       return false;
     }
   }
+
   async getPosts(queries = [Query.equal("status", "active")]) {
     try {
       return await this.databases.listDocuments(
@@ -96,7 +91,7 @@ export class Service {
     }
   }
 
-  //File Upload section
+  // file upload service
 
   async uploadFile(file) {
     try {
@@ -111,7 +106,6 @@ export class Service {
     }
   }
 
-  //Delete File
   async deleteFile(fileId) {
     try {
       await this.bucket.deleteFile(conf.appwriteBucketId, fileId);
@@ -122,13 +116,10 @@ export class Service {
     }
   }
 
-  //
-
   getFilePreview(fileId) {
     return this.bucket.getFilePreview(conf.appwriteBucketId, fileId);
   }
 }
 
 const service = new Service();
-
 export default service;
