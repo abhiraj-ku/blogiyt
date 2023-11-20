@@ -64,4 +64,6 @@ To get started with this blogging platform, follow these steps:
 
 We welcome contributions from the community. If you'd like to contribute to this project, Just Fork and clone it & start Contributing
 
-Happy blogging!
+## Socials:
+
+follow on Twitter: [twitter](https://twitter.com/abhirajabhi312)
